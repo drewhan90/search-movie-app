@@ -7,9 +7,10 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
 import ListItemButton from '@mui/material/ListItemButton'
+import Typography from '@mui/material/Typography'
 
 const MediaList = ({ mediaData, handleButtonClick }) => {
-    if (mediaData.length === 0) return <div>Search an existing movie</div>
+    if (mediaData.length === 0) return <Typography>Search an existing movie</Typography>
     return (
         <List>
             {

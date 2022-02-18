@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 
 const MediaGridList = ({ mediaData, handleButtonClick }) => {
-    if (mediaData.length === 0) return <div>Search an existing movie</div>
+    if (mediaData.length === 0) return <Typography>Search an existing movie</Typography>
 
     return (
         <Grid container spacing={3}>
