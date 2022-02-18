@@ -6,13 +6,10 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Pagination from '@mui/material/Pagination'
 
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import { List as ListIcon, GridView as GridViewIcon } from '@mui/icons-material'
-
 import MediaList from '../components/MediaList'
 import MediaGridList from '../components/MediaGridList'
 import SearchBar from '../components/SearchBar'
+import ToggleView from '../components/ToggleView'
 
 import useFetchMovieData from '../hooks/useFetchMovieData'
 
@@ -37,19 +34,7 @@ export default function Index() {
       </Grid>
       <Box>
         <Box mb={3}>
-          <ToggleButtonGroup
-            value={view}
-            onChange={handleView}
-            exclusive
-            aria-label="list view"
-          >
-            <ToggleButton value="grid" aria-label="grid view">
-              <GridViewIcon />
-            </ToggleButton>
-            <ToggleButton value="list" aria-label="list view">
-              <ListIcon />
-            </ToggleButton>
-          </ToggleButtonGroup>
+          <ToggleView view={view} handleView={handleView} />
         </Box>
         {
           view === 'list' ? (
