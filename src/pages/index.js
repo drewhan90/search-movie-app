@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import _ from 'lodash'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
@@ -48,7 +49,7 @@ export default function Index() {
       <Grid container justifyContent="center" mt={10} mb={6}>
         <Box width={['100%', 0.5, '500px']}>
           <TextField
-            onChange={onSearch}
+            onChange={_.debounce(onSearch, 300)}
             placeholder="Search movie by title"
             InputProps={{
               startAdornment: (
