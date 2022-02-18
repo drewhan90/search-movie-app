@@ -1,4 +1,5 @@
 import React from 'react'
+import pt from 'prop-types'
 
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
@@ -22,6 +23,15 @@ const SearchBar = ({ handleSearch, placeholder }) => {
             />
         </Box>
     )
+}
+
+SearchBar.propTypes = {
+    handleSearch: pt.func.isRequired,
+    placeholder: pt.string
+}
+
+SearchBar.defaultProps = {
+    placeholder: ''
 }
 
 export default SearchBar
