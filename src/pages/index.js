@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import _ from 'lodash'
+
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
@@ -8,14 +9,10 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import { CardActionArea } from '@mui/material'
 import { Search as SearchIcon, List as ListIcon, GridView as GridViewIcon } from '@mui/icons-material'
 
-import MediaListItem from '../components/MediaListItem'
+import MediaList from '../components/MediaList'
+import MediaGridList from '../components/MediaGridList'
 
 export default function Index() {
   const [movieData, setMovieData] = useState([])
@@ -79,36 +76,9 @@ export default function Index() {
         </Box>
         {
           view === 'list' ? (
-            <MediaListItem mediaData={movieData} />
+            <MediaList mediaData={movieData} />
           ) : (
-            <Grid container spacing={3}>
-              {
-                movieData && movieData.map((data) => {
-                  return (
-                    <Grid item xs={4}>
-                      <Card>
-                        <CardActionArea>
-                          <CardMedia
-                            component="img"
-                            height={448}
-                            image={data.Poster}
-                            alt={data.Title}
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant="h5" component="div" noWrap>
-                              {data.Title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {data.Year}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </Grid>
-                  )
-                })
-              }
-            </Grid>
+            <MediaGridList mediaData={movieData} />
           )
         }
       </Box>

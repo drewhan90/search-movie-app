@@ -1,5 +1,6 @@
 import React from 'react'
 import pt from 'prop-types'
+
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -7,7 +8,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
 import ListItemButton from '@mui/material/ListItemButton'
 
-const MediaListItem = ({ mediaData }) => {
+const MediaList = ({ mediaData }) => {
     if (mediaData.length === 0) return <div>Search an existing movie</div>
 
     return (
@@ -30,8 +31,12 @@ const MediaListItem = ({ mediaData }) => {
     )
 }
 
-MediaListItem.propTypes = {
-    mediaData: pt.array.isRequired
+MediaList.propTypes = {
+    mediaData: pt.array
 }
 
-export default MediaListItem
+MediaList.defaultProps = {
+    mediaData: []
+}
+
+export default MediaList
