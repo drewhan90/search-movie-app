@@ -5,12 +5,7 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Avatar from '@mui/material/Avatar'
-import ListItemButton from '@mui/material/ListItemButton'
+
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Card from '@mui/material/Card'
@@ -20,8 +15,10 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 import { Search as SearchIcon, List as ListIcon, GridView as GridViewIcon } from '@mui/icons-material'
 
+import MediaListItem from '../components/MediaListItem'
+
 export default function Index() {
-  const [movieData, setMovieData] = useState()
+  const [movieData, setMovieData] = useState([])
   const [view, setView] = useState('grid')
   const onSearch = async (e) => {
     try {
@@ -82,22 +79,7 @@ export default function Index() {
         </Box>
         {
           view === 'list' ? (
-            <List>
-              {
-                movieData && movieData.map((data) => {
-                  return (
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemAvatar>
-                          <Avatar src={data.Poster} alt={data.Title} />
-                        </ListItemAvatar>
-                        <ListItemText primary={data.Title} secondary={data.Year} />
-                      </ListItemButton>
-                    </ListItem>
-                  )
-                })
-              }
-            </List>
+            <MediaListItem mediaData={movieData} />
           ) : (
             <Grid container spacing={3}>
               {
