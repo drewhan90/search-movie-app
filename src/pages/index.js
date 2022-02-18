@@ -4,16 +4,15 @@ import _ from 'lodash'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
-import InputAdornment from '@mui/material/InputAdornment'
 import Pagination from '@mui/material/Pagination'
 
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import { Search as SearchIcon, List as ListIcon, GridView as GridViewIcon } from '@mui/icons-material'
+import { List as ListIcon, GridView as GridViewIcon } from '@mui/icons-material'
 
 import MediaList from '../components/MediaList'
 import MediaGridList from '../components/MediaGridList'
+import SearchBar from '../components/SearchBar'
 
 import useFetchMovieData from '../hooks/useFetchMovieData'
 
@@ -34,20 +33,7 @@ export default function Index() {
   return (
     <Container bg="black">
       <Grid container justifyContent="center" mt={10} mb={6}>
-        <Box width={['100%', 0.5, '500px']}>
-          <TextField
-            onChange={handleSearch}
-            placeholder="Search movie by title"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              )
-            }}
-            fullWidth
-          />
-        </Box>
+        <SearchBar handleSearch={handleSearch} placeholder="Search movie by title" />
       </Grid>
       <Box>
         <Box mb={3}>
