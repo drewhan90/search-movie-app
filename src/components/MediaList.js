@@ -8,7 +8,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
 import ListItemButton from '@mui/material/ListItemButton'
 
-const MediaList = ({ mediaData }) => {
+const MediaList = ({ mediaData, handleButtonClick }) => {
     if (mediaData.length === 0) return <div>Search an existing movie</div>
 
     return (
@@ -17,11 +17,11 @@ const MediaList = ({ mediaData }) => {
                 mediaData.map((data) => {
                     return (
                         <ListItem disablePadding>
-                            <ListItemButton>
-                            <ListItemAvatar>
-                                <Avatar src={data.Poster} alt={data.Title} />
-                            </ListItemAvatar>
-                            <ListItemText primary={data.Title} secondary={data.Year} />
+                            <ListItemButton onClick={handleButtonClick}>
+                                <ListItemAvatar>
+                                    <Avatar src={data.Poster} alt={data.Title} />
+                                </ListItemAvatar>
+                                <ListItemText primary={data.Title} secondary={data.Year} />
                             </ListItemButton>
                         </ListItem>
                     )
@@ -32,11 +32,13 @@ const MediaList = ({ mediaData }) => {
 }
 
 MediaList.propTypes = {
-    mediaData: pt.array
+    mediaData: pt.array,
+    handleButtonClick: pt.func
 }
 
 MediaList.defaultProps = {
-    mediaData: []
+    mediaData: [],
+    handleButtonClick: () => {}
 }
 
 export default MediaList

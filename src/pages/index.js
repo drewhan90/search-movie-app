@@ -28,6 +28,9 @@ export default function Index() {
     console.log(_view)
     setView(_view)
   }
+  const handleDisplayLabel = () => {
+    console.log('display label!')
+  }
   return (
     <Container bg="black">
       <Grid container justifyContent="center" mt={10} mb={6}>
@@ -64,9 +67,9 @@ export default function Index() {
         </Box>
         {
           view === 'list' ? (
-            <MediaList mediaData={movieData} />
+            <MediaList mediaData={movieData} handleButtonClick={handleDisplayLabel} />
           ) : (
-            <MediaGridList mediaData={movieData} />
+            <MediaGridList mediaData={movieData} handleButtonClick={handleDisplayLabel} />
           )
         }
       </Box>

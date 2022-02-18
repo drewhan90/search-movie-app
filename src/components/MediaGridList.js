@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 
-const MediaGridList = ({ mediaData }) => {
+const MediaGridList = ({ mediaData, handleButtonClick }) => {
     console.log({ mediaData })
     if (mediaData.length === 0) return <div>Search an existing movie</div>
 
@@ -19,7 +19,7 @@ const MediaGridList = ({ mediaData }) => {
                   return (
                     <Grid item xs={4}>
                       <Card>
-                        <CardActionArea>
+                        <CardActionArea onClick={handleButtonClick}>
                           <CardMedia
                             component="img"
                             height={448}
@@ -45,11 +45,13 @@ const MediaGridList = ({ mediaData }) => {
 }
 
 MediaGridList.propTypes = {
-    mediaData: pt.array.isRequired
+    mediaData: pt.array.isRequired,
+    handleButtonClick: pt.func
 }
 
 MediaGridList.defaultProps = {
-    mediaData: []
+    mediaData: [],
+    handleButtonClick: () => {}
 }
 
 export default MediaGridList
