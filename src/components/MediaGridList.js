@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 
 const MediaGridList = ({ mediaData }) => {
+    console.log({ mediaData })
     if (mediaData.length === 0) return <div>Search an existing movie</div>
 
     return (

@@ -14,27 +14,15 @@ import { Search as SearchIcon, List as ListIcon, GridView as GridViewIcon } from
 import MediaList from '../components/MediaList'
 import MediaGridList from '../components/MediaGridList'
 
+import fetchMovieData from '../utils/fetchMovieData'
+
 export default function Index() {
   const [movieData, setMovieData] = useState([])
   const [view, setView] = useState('grid')
   const onSearch = async (e) => {
-    try {
-      let movieList = []
-      const { value } = e.target
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${value}&type=movie`)
-
-      if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
-
-      const data = await res.json()
-
-      if (data.Response === 'True' && data.Search) {
-        movieList = data.Search
-      }
-      
-      setMovieData(movieList)
-    } catch (err) {
-      throw err
-    }
+    const { value } = e.target
+    const movieList = await fetchMovieData(value)
+    setMovieData(movieList)
   }
   const handleView = (e, _view) => {
     console.log(_view)
