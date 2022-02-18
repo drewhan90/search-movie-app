@@ -16,7 +16,7 @@ const MediaGridList = ({ mediaData, handleButtonClick }) => {
               {
                 mediaData.map((data) => {
                   return (
-                    <Grid key={`media-grid-list-${data.imdbID}`} item xs={3}>
+                    <Grid key={`media-grid-list-${data.imdbID}`} item sx={12} sm={6} md={3}>
                       <Card>
                         <CardActionArea onClick={handleButtonClick}>
                           <CardMedia
