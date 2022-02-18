@@ -7,13 +7,15 @@
 4. [OMDb API](http://www.omdbapi.com/)
 
 ## Getting Started
-
-First, run the development server:
+1. Get free api key from http://www.omdbapi.com/apikey.aspx
+2. Create `.env` file at root directory and add `OMDB_API_KEY={your_api_key}`
+3. Then, run the development server:
 
 ```bash
+# if first time running project
+npm install
+# then
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
