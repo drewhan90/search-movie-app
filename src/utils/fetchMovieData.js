@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
 
-const useFetchMovieData = async (title) => {
+/**
+ * @param {string} title
+ * @param {string} type valid options [movie, series, episode]
+ * @return {array} movie list
+ */
+
+const useFetchMovieData = async (title, type = 'movie') => {
     let movieList = []
     try {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${title}&type=movie`)
+        const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${title}&type=${type}`)
 
         if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
 
