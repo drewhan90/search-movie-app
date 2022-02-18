@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import _ from 'lodash'
 
 import Container from '@mui/material/Container'
@@ -15,44 +15,28 @@ import { Search as SearchIcon, List as ListIcon, GridView as GridViewIcon } from
 import MediaList from '../components/MediaList'
 import MediaGridList from '../components/MediaGridList'
 
-import fetchMovieData from '../utils/fetchMovieData'
+import useFetchMovieData from '../hooks/useFetchMovieData'
 
 export default function Index() {
-  const [title, setTitle] = useState('')
-  const [page, setPage] = useState(1)
-  const [pageCount, setPageCount] = useState(1)
-  const [movieData, setMovieData] = useState([])
   const [view, setView] = useState('grid')
+  const [
+    { page, pageCount, movieData },
+    { handleSearch, handlePageChange }
+  ] = useFetchMovieData('movie')
 
-  useEffect(() => {
-    const fetchMovie = async () => {
-      const [movieList, totalResults] = await fetchMovieData(title, 'movie', page)
-      setMovieData(movieList)
-      setPageCount(Math.round(totalResults / 10))
-    }
-    fetchMovie()
-  }, [title, page])
-
-  const onSearch = async (e) => {
-    const { value } = e.target
-    setTitle(value)
-    setPage(1)
-  }
   const handleView = (e, _view) => {
     setView(_view)
   }
   const handleDisplayLabel = () => {
     console.log('display label!')
   }
-  const handlePageChange = (e, value) => {
-    setPage(value)
-  }
+
   return (
     <Container bg="black">
       <Grid container justifyContent="center" mt={10} mb={6}>
         <Box width={['100%', 0.5, '500px']}>
           <TextField
-            onChange={_.debounce(onSearch, 300)}
+            onChange={handleSearch}
             placeholder="Search movie by title"
             InputProps={{
               startAdornment: (
@@ -89,7 +73,7 @@ export default function Index() {
           )
         }
         <Box mt={3}>
-          <Pagination count={pageCount} page={page} onChange={_.debounce(handlePageChange, 300)} />
+          <Pagination count={pageCount} page={page} onChange={handlePageChange} />
         </Box>
       </Box>
     </Container>

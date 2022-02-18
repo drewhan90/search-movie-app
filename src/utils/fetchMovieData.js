@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 /**
  * @param {string} title
  * @param {string} type valid options [movie, series, episode]
