@@ -25,6 +25,7 @@ export default function Index() {
   const [view, setView] = useState('grid')
   const onSearch = async (e) => {
     try {
+      let movieList = []
       const { value } = e.target
       const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${value}&type=movie`)
 
@@ -33,9 +34,10 @@ export default function Index() {
       const data = await res.json()
 
       if (data.Response === 'True' && data.Search) {
-        console.log({ data })
-        setMovieData(data.Search)
+        movieList = data.Search
       }
+      
+      setMovieData(movieList)
     } catch (err) {
       throw err
     }
