@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import _ from 'lodash'
 
+import Head from 'next/head'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Pagination from '@mui/material/Pagination'
+import Divider from '@mui/material/Divider'
 
 import MediaList from '../components/MediaList'
 import MediaGridList from '../components/MediaGridList'
@@ -29,10 +31,13 @@ export default function Index() {
 
   return (
     <Container bg="black">
+      <Head>
+        <title>Search Movie</title>
+      </Head>
       <Grid container justifyContent="center" mt={10} mb={6}>
         <SearchBar handleSearch={handleSearch} placeholder="Search movie by title" />
       </Grid>
-      <Box>
+      <Box mb={6}>
         <Box mb={3}>
           <ToggleView view={view} handleView={handleView} />
         </Box>
@@ -45,8 +50,11 @@ export default function Index() {
         }
         {
           pageCount > 1 && (
-            <Box mt={3}>
-              <Pagination count={pageCount} page={page} onChange={handlePageChange} />
+            <Box mt={4}>
+              <Divider />
+              <Box mt={2}>
+                <Pagination count={pageCount} page={page} onChange={handlePageChange} />
+              </Box>
             </Box>
           )
         }
