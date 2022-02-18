@@ -43,9 +43,13 @@ export default function Index() {
             <MediaGridList mediaData={movieData} handleButtonClick={handleDisplayLabel} />
           )
         }
-        <Box mt={3}>
-          <Pagination count={pageCount} page={page} onChange={handlePageChange} />
-        </Box>
+        {
+          pageCount > 1 && (
+            <Box mt={3}>
+              <Pagination count={pageCount} page={page} onChange={handlePageChange} />
+            </Box>
+          )
+        }
       </Box>
     </Container>
   )
