@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 
 const MediaGridList = ({ mediaData, handleButtonClick }) => {
-    console.log({ mediaData })
     if (mediaData.length === 0) return <div>Search an existing movie</div>
 
     return (
@@ -17,7 +16,7 @@ const MediaGridList = ({ mediaData, handleButtonClick }) => {
               {
                 mediaData.map((data) => {
                   return (
-                    <Grid item xs={4}>
+                    <Grid key={`media-grid-list-${data.imdbID}`} item xs={4}>
                       <Card>
                         <CardActionArea onClick={handleButtonClick}>
                           <CardMedia
@@ -45,7 +44,13 @@ const MediaGridList = ({ mediaData, handleButtonClick }) => {
 }
 
 MediaGridList.propTypes = {
-    mediaData: pt.array.isRequired,
+    mediaData: pt.arrayOf(pt.shape({
+      Poster: pt.string,
+      Title: pt.string.isRequired,
+      Type: pt.string.isRequired,
+      Year: pt.string,
+      imdbID: pt.string
+    })),
     handleButtonClick: pt.func
 }
 

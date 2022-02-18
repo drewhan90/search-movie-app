@@ -25,7 +25,6 @@ export default function Index() {
     setMovieData(movieList)
   }
   const handleView = (e, _view) => {
-    console.log(_view)
     setView(_view)
   }
   const handleDisplayLabel = () => {

@@ -10,13 +10,12 @@ import ListItemButton from '@mui/material/ListItemButton'
 
 const MediaList = ({ mediaData, handleButtonClick }) => {
     if (mediaData.length === 0) return <div>Search an existing movie</div>
-
     return (
         <List>
             {
                 mediaData.map((data) => {
                     return (
-                        <ListItem disablePadding>
+                        <ListItem key={`media-list-${data.imdbID}`} disablePadding>
                             <ListItemButton onClick={handleButtonClick}>
                                 <ListItemAvatar>
                                     <Avatar src={data.Poster} alt={data.Title} />
@@ -32,7 +31,13 @@ const MediaList = ({ mediaData, handleButtonClick }) => {
 }
 
 MediaList.propTypes = {
-    mediaData: pt.array,
+    mediaData: pt.arrayOf(pt.shape({
+        Poster: pt.string,
+        Title: pt.string.isRequired,
+        Type: pt.string.isRequired,
+        Year: pt.string,
+        imdbID: pt.string
+    })),
     handleButtonClick: pt.func
 }
 
